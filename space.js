@@ -9,10 +9,10 @@ let boardHeight = tileSize * rows; // 32 * 16
 let context;
 
 //ship
-let shipWidth = tileSize*2;
-let shipHeight = tileSize;
+let shipWidth = tileSize*4;
+let shipHeight = tileSize*4;
 let shipX = tileSize * columns/2 - tileSize;
-let shipY = tileSize * rows - tileSize*2;
+let shipY = tileSize * rows - tileSize*2 - 60;
 
 let ship = {
     x : shipX,
@@ -56,7 +56,7 @@ window.onload = function() {
 
     //load images
     shipImg = new Image();
-    shipImg.src = "./ship.png";
+    shipImg.src = "./astroboy4.png";
     shipImg.onload = function() {
         context.drawImage(shipImg, ship.x, ship.y, ship.width, ship.height);
     }
@@ -110,7 +110,7 @@ function update() {
     for (let i = 0; i < bulletArray.length; i++) {
         let bullet = bulletArray[i];
         bullet.y += bulletVelocityY;
-        context.fillStyle="white";
+        context.fillStyle ='#98F1FF';
         context.fillRect(bullet.x, bullet.y, bullet.width, bullet.height);
 
         //bullet collision with aliens
@@ -193,8 +193,8 @@ function shoot(e) {
         let bullet = {
             x : ship.x + shipWidth*15/32,
             y : ship.y,
-            width : tileSize/8,
-            height : tileSize/2,
+            width : tileSize/4,
+            height : tileSize/4,
             used : false
         }
         bulletArray.push(bullet);
